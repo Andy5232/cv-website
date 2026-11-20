@@ -1,0 +1,165 @@
+/* ---------- Colours and basics ---------- */
+:root {
+  --navy: #1f2a44;      /* main brand colour */
+  --navy-2: #2d3b5e;
+  --gold: #b8935a;      /* accent — use on navy backgrounds */
+  --gold-dark: #8a6a3a; /* darker accent — readable on white/grey backgrounds */
+  --ink: #1c1f26;       /* body text */
+  --muted: #5d6475;     /* secondary text */
+  --line: #e3e6ec;      /* borders */
+  --bg-alt: #f6f7f9;    /* light grey section background */
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  line-height: 1.6;
+  background: #fff;
+}
+
+h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; color: var(--navy); line-height: 1.25; }
+h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+h3 { font-size: 1.15rem; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+.container { width: min(1100px, 92%); margin: 0 auto; }
+.narrow { width: min(820px, 92%); }
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+.logo { font-family: "Source Serif 4", serif; font-weight: 700; font-size: 1.2rem; color: var(--navy); }
+.nav nav a { margin-left: 1.5rem; font-size: 0.95rem; color: var(--muted); font-weight: 500; }
+.nav nav a:hover { color: var(--navy); }
+
+/* ---------- Hero ---------- */
+.hero { background: var(--navy); color: #fff; padding: 5rem 0; }
+.hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
+.hero h1 { color: #fff; font-size: 3.2rem; margin: 0.3rem 0 1rem; }
+.eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.85rem; font-weight: 600; }
+.lead { font-size: 1.15rem; color: #d7dbe6; max-width: 34rem; }
+.hero-photo {
+  width: 280px; height: 340px; object-fit: cover; flex-shrink: 0;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border: 4px solid rgba(255,255,255,0.12);
+}
+
+/* ---------- Buttons ---------- */
+.buttons { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+.btn {
+  display: inline-block; padding: 0.75rem 1.4rem; border-radius: 8px;
+  font-weight: 600; font-size: 0.95rem;
+  border: 1.5px solid currentColor; transition: transform 0.2s, background 0.2s;
+}
+/* Navy text on gold keeps the look and is easy to read */
+.btn.primary { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+.btn.primary:hover { background: #c6a46d; border-color: #c6a46d; }
+.btn:hover { transform: translateY(-2px); }
+.hero .btn:not(.primary) { color: #fff; }
+
+/* ---------- Sections ---------- */
+.section { padding: 5rem 0; }
+.section.alt { background: var(--bg-alt); }
+.section p { margin-bottom: 1rem; }
+.when { color: var(--gold-dark); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
+h3 span { color: var(--muted); font-weight: 600; }
+h3 span.company { color: var(--navy); }
+
+/* ---------- Research ---------- */
+.research { padding-top: 0; }
+.research-card {
+  background: var(--navy); color: #d7dbe6;
+  border-radius: var(--radius); padding: 2rem 2.2rem;
+  border-left: 5px solid var(--gold);
+}
+.research-label { color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem !important; }
+.research-card h3 { color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem; }
+.research-sub { font-size: 1.05rem; }
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
+.tags li {
+  font-size: 0.85rem; font-weight: 500; color: #fff;
+  border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 0.25rem 0.8rem;
+}
+
+/* ---------- Experience timeline ---------- */
+.timeline { list-style: none; border-left: 2px solid var(--line); margin-left: 0.5rem; }
+.timeline > li { position: relative; padding: 0 0 2.5rem 2rem; }
+.timeline > li:last-child { padding-bottom: 0; }
+.timeline > li::before {
+  content: ""; position: absolute; left: -8px; top: 6px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--navy);
+}
+.timeline > li:first-child::before { background: var(--gold); border-color: var(--gold); }
+.timeline ul { margin: 0.6rem 0 0 1.1rem; color: var(--muted); }
+.timeline ul li { margin-bottom: 0.3rem; }
+
+/* Several roles at one company (e.g. Wolt) */
+.role { margin-top: 1rem; padding-left: 1rem; border-left: 2px solid var(--line); }
+.role-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 1rem; }
+.role-head strong { color: var(--navy); }
+.role-when { color: var(--muted); font-size: 0.88rem; }
+.role ul { margin-top: 0.3rem; }
+
+/* ---------- Education ---------- */
+.edu { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; }
+.edu-item { border-top: 3px solid var(--navy); padding-top: 0.8rem; }
+.edu-item p { color: var(--muted); font-size: 0.95rem; }
+
+.card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; }
+.card h3 { margin-bottom: 0.5rem; }
+.sub { margin: 2.2rem 0 1rem; }
+
+.modules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+.module { border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; }
+.module strong { display: block; color: var(--navy); }
+.module span { color: var(--muted); font-size: 0.92rem; }
+
+/* ---------- Skills ---------- */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; align-items: start; }
+.plain { list-style: none; color: var(--muted); }
+.plain li { padding: 0.35rem 0; border-bottom: 1px solid var(--line); }
+.plain li:last-child { border-bottom: none; }
+.plain li.small { font-size: 0.88rem; }
+
+/* ---------- Contact and footer ---------- */
+.contact { text-align: center; }
+.contact .buttons { justify-content: center; }
+.contact .btn:not(.primary) { color: var(--navy); }
+.footer { background: var(--navy); color: #aab2c5; text-align: center; padding: 1.5rem 0; font-size: 0.9rem; }
+
+/* ---------- Phones and small screens ---------- */
+@media (max-width: 800px) {
+  html { scroll-padding-top: 100px; }
+  /* Menu becomes a swipeable row under the name */
+  .nav-inner { flex-direction: column; align-items: flex-start; height: auto; padding: 0.6rem 0 0; }
+  .nav nav {
+    display: flex; gap: 1.2rem; width: 100%;
+    overflow-x: auto; scrollbar-width: none; padding: 0.4rem 0 0.6rem;
+  }
+  .nav nav::-webkit-scrollbar { display: none; }
+  .nav nav a { margin-left: 0; font-size: 0.9rem; white-space: nowrap; }
+
+  .hero { padding: 3rem 0; }
+  .hero-inner { flex-direction: column-reverse; text-align: center; }
+  .hero h1 { font-size: 2.4rem; }
+  .buttons { justify-content: center; }
+  .hero-photo { width: 200px; height: 245px; }
+  .edu, .modules, .skills-grid { grid-template-columns: 1fr; }
+  .research-card { padding: 1.5rem; }
+  .research-card h3 { font-size: 1.3rem; }
+  h2 { font-size: 1.7rem; }
+}
